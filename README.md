@@ -35,7 +35,7 @@ Vamos criar uma aplicação com Spring Boot que funciona com os recursos do Loca
 
 ## Passo a Passo para criar e configurar o projeto
 
-- Gerar projeto no Spring Initialzr
+- Gerar projeto no Spring Initialzr:
   - Nome: spring-boot-localstack
 - Incluir dependência do Spring Cloud AWS:
 ```
