@@ -141,8 +141,18 @@ services:
 - Inicializar LocalStack
 - Incluir diretório de log no pom.xml:
 ```
-
+<logs.path>./logs</logs.path>
 ```
+- Criar uma configuração no Parameter Store:
+```
+@echo off
+aws --endpoint http://localhost:4566 --profile localstack ssm put-parameter --name "/config/spring-boot-localstack_localstack/helloWorld" --value "Hello World Parameter Store" --type String
+```
+- Executar aplicação
+- Criar classe para obter configuração do Parameter Store
+- Criar classe de Controller
+- Executar aplicação
+- Executar no Insomnia
 
 ---
 Thomás da Costa - [https://thomasdacosta.com.br](https://thomasdacosta.com.br)
