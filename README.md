@@ -1,5 +1,6 @@
 # Spring Boot com Localstack
 
+Vamos criar uma aplicação com Spring Boot que funciona com os recursos do LocalStack e da AWS. Iremos mostrar passo a passo como criar e configurar a aplicação do ZERO.
 
 ![](https://img.youtube.com/vi/Vlmjw5nifOo/0.jpg)
 
