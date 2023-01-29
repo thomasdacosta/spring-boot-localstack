@@ -33,5 +33,34 @@ Vamos criar uma aplicação com Spring Boot que funciona com os recursos do Loca
 33:24 Executando o teste no Insomnia<br/>
 34:43 EASTER EGG!!!!<br/>
 
+## Passo a Passo para criar e configurar o projeto
+
+- Gerar projeto no Spring Initialzr
+  - Nome: spring-boot-localstack
+- Incluir dependência do Spring Cloud AWS:
+```
+            <dependency>
+                <groupId>io.awspring.cloud</groupId>
+                <artifactId>spring-cloud-aws-dependencies</artifactId>
+                <version>${spring.cloud-aws}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+```
+- Incluir versão do Spring Cloud AWS no properties:
+```
+<spring.cloud-aws>2.4.2</spring.cloud-aws>
+```
+- Incluir dependência do Spring Cloud AWS Starter:
+```
+        <dependency>
+            <groupId>io.awspring.cloud</groupId>
+            <artifactId>spring-cloud-starter-aws</artifactId>
+        </dependency>
+```        
+
+
+
+
 ---
 Thomás da Costa - [https://thomasdacosta.com.br](https://thomasdacosta.com.br)
