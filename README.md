@@ -33,7 +33,7 @@ Vamos criar uma aplicação com Spring Boot que funciona com os recursos do Loca
 33:24 Executando o teste no Insomnia<br/>
 34:43 EASTER EGG!!!!<br/>
 
-## Passo a Passo para criar e configurar o projeto
+## Passo a passo para criar e configurar o projeto
 
 - Gerar projeto no Spring Initialzr:
   - Nome: spring-boot-localstack
