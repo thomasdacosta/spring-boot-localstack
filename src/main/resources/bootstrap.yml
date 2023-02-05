@@ -10,3 +10,6 @@ aws:
   paramstore:
     enabled: true
     endpoint: http://localhost:4566
+  secretsmanager:
+    enabled: true
+    endpoint: http://localhost:4566
