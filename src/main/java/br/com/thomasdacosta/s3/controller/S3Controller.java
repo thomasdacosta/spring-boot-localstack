@@ -71,7 +71,7 @@ public class S3Controller {
         if (fileService.isFileExists(file)) {
             List<Resource> resources = fileService.searchFile(file, true);
             Resource resource = resources.get(0);
-            return ResponseEntity.ok(S3FileDTO.getInstance(resource.getFilename(), fileService.contenteFile(resource.getFilename())));
+            return ResponseEntity.ok(S3FileDTO.getInstance(resource.getFilename(), fileService.contentFile(resource.getFilename())));
         } else {
             return new ResponseEntity<>(S3FileDTO.getInstance(FILE_NOT_EXISTS, null), HttpStatus.NOT_FOUND);
         }

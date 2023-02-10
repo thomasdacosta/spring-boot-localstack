@@ -43,7 +43,8 @@ public class S3FileService {
 
     public boolean isFileExists(String file) {
         try {
-            Resource resource = this.resourceLoader.getResource(String.format("s3://%s/%s", directory, file));
+            Resource resource = this.resourceLoader
+                    .getResource(String.format("s3://%s/%s", directory, file));
             return resource.contentLength() > 0;
         } catch (Exception ex) {
             return false;
@@ -76,7 +77,7 @@ public class S3FileService {
         }
     }
 
-    public String contenteFile(String file) {
+    public String contentFile(String file) {
         try {
             Resource resource = resourceLoader.getResource(String.format("s3://%s/%s", directory, file));
             return new BufferedReader(
