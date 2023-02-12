@@ -1,13 +1,14 @@
 package br.com.thomasdacosta.sqs.listener;
 
+import io.awspring.cloud.messaging.listener.annotation.SqsListener;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class SqsListener {
+public class SqsMessageListener {
 
-    @io.awspring.cloud.messaging.listener.annotation.SqsListener("${sqsQueueName}")
+    @SqsListener("${sqsQueueName}")
     public void queueListener(String message) {
         try {
             log.info(message);
