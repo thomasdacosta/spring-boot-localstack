@@ -1,0 +1,13 @@
+[Unit]
+Description=spring-boot-localstack
+After=syslog.target network.target
+
+[Service]
+WorkingDirectory=/home/ec2-user/spring-boot-localstack
+ExecStart=/usr/bin/java -jar -Dspring.profiles.active=production /home/ec2-user/spring-boot-localstack/spring-boot-localstack.jar
+KillMode=process
+User=ec2-user
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
