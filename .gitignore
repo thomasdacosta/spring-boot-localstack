@@ -5,6 +5,7 @@
 .DS_Store
 
 ### Eclipse ###
+spring-boot-localstack.iml
 volume/
 obj/**
 .metadata

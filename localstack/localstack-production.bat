@@ -9,7 +9,7 @@ aws ssm put-parameter --name "/config/spring-boot-localstack_production/valor2" 
 aws ssm put-parameter --name "/config/spring-boot-localstack_production/valor3" --value "Hola Mundo" --type String
 
 echo ### Criando Bucket no S3 do LocalStack...
-aws s3 mb s3://helloworld-spring
+aws s3 mb s3://s3-helloworld
 
 echo ### Criando Queue(Standard) no SQS do LocalStack...
 aws sqs create-queue --queue-name sqsHelloWorld
