@@ -174,7 +174,7 @@ Nesse exemplo utilizamos AWS Academy Learner Lab nas aulas do AWS Academy
   ```
 - Executar os scripts do arquivo **[localstack-production.bat](localstack%2Flocalstack-production.bat)** no **AWS Cloud Shell**;
 - Copiar o arquivo JAR para a máquina;
-- Enviar o **[start.sh](service%2Fstart.sh)** e **[spring-boot-localstack.service](service%2Fspring-boot-localstack.service)*.service** para a máquina;
+- Enviar o **[start.sh](service%2Fstart.sh)** e **[spring-boot-localstack.service](service%2Fspring-boot-localstack.service)** para a máquina;
 - Executar o script de subida;
 - Copiar o arquivo **[spring-boot-localstack.service](service%2Fspring-boot-localstack.service)** para **/etc/systemd/system**
 - Criar serviço no Linux:
