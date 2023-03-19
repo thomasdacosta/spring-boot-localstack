@@ -183,6 +183,8 @@ Nesse exemplo utilizamos AWS Academy Learner Lab nas aulas do AWS Academy
   sudo systemctl start spring-boot-localstack.service
   sudo systemctl stop spring-boot-localstack.service
   ```
-
+- Criar o RDS usando o Free Tier;
+- Atribuir o Security Group do EC2 para as Inbound Rules do RDS para funcionar corretamente. 
+ 
 ---
 Thomás da Costa - [https://thomasdacosta.com.br](https://thomasdacosta.com.br)

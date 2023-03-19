@@ -12,10 +12,6 @@ public class Aluno {
     @Column(name = "ID_ALUNO", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_CURSO")
-    private Curso idCurso;
-
     @Column(name = "NOME", nullable = false)
     private String nome;
 
@@ -46,14 +42,6 @@ public class Aluno {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Curso getIdCurso() {
-        return idCurso;
-    }
-
-    public void setIdCurso(Curso idCurso) {
-        this.idCurso = idCurso;
     }
 
     public String getNome() {

@@ -18,10 +18,6 @@ public class AlunoRequest {
     private Integer idAluno;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("curso")
-    private CursoRequest curso;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("nome")
     private String nome;
 
@@ -61,14 +57,6 @@ public class AlunoRequest {
 
     public void setIdAluno(Integer idAluno) {
         this.idAluno = idAluno;
-    }
-
-    public CursoRequest getCurso() {
-        return curso;
-    }
-
-    public void setCurso(CursoRequest curso) {
-        this.curso = curso;
     }
 
     public String getNome() {

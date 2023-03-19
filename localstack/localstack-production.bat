@@ -8,6 +8,9 @@ aws ssm put-parameter --name "/config/spring-boot-localstack_production/valor1" 
 aws ssm put-parameter --name "/config/spring-boot-localstack_production/valor2" --value "Hello World" --type String
 aws ssm put-parameter --name "/config/spring-boot-localstack_production/valor3" --value "Hola Mundo" --type String
 aws ssm put-parameter --name "/config/spring-boot-localstack_production/s3Bucket" --value "s3-helloworld" --type String
+aws ssm put-parameter --name "/config/spring-boot-localstack_production/dbUrl" --value "jdbc:mysql://localhost:3306/databasedemo?createDatabaseIfNotExist=true" --type String
+aws ssm put-parameter --name "/config/spring-boot-localstack_production/dbUser" --value "admin" --type String
+aws ssm put-parameter --name "/config/spring-boot-localstack_production/dbPass" --value "admin123456789" --type String
 
 echo ### Criando Bucket no S3 do LocalStack...
 aws s3 mb s3://s3-helloworld

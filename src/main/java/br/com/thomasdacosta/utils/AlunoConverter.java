@@ -2,9 +2,7 @@ package br.com.thomasdacosta.utils;
 
 import br.com.thomasdacosta.dto.AlunoRequest;
 import br.com.thomasdacosta.dto.AlunoResponse;
-import br.com.thomasdacosta.dto.CursoRequest;
 import br.com.thomasdacosta.entity.Aluno;
-import br.com.thomasdacosta.entity.Curso;
 
 public class AlunoConverter {
 
@@ -21,11 +19,6 @@ public class AlunoConverter {
         alunoResponse.setCidade(aluno.getCidade());
         alunoResponse.setEstado(aluno.getEstado());
 
-        CursoRequest cursoRequest = new CursoRequest();
-        cursoRequest.setIdCurso(aluno.getIdCurso().getId());
-
-        alunoResponse.setCurso(cursoRequest);
-
         return alunoResponse;
     }
 
@@ -40,11 +33,6 @@ public class AlunoConverter {
         alunoRequest.setCep(aluno.getCep());
         alunoRequest.setCidade(aluno.getCidade());
         alunoRequest.setEstado(aluno.getEstado());
-
-        CursoRequest cursoRequest = new CursoRequest();
-        cursoRequest.setIdCurso(aluno.getIdCurso().getId());
-
-        alunoRequest.setCurso(cursoRequest);
 
         return alunoRequest;
     }
@@ -61,10 +49,6 @@ public class AlunoConverter {
         aluno.setCep(alunoRequest.getCep());
         aluno.setCidade(alunoRequest.getCidade());
         aluno.setEstado(alunoRequest.getEstado());
-
-        Curso curso = new Curso();
-        curso.setId(alunoRequest.getCurso().getIdCurso());
-        aluno.setIdCurso(curso);
 
         return aluno;
     }
