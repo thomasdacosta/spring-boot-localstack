@@ -9,6 +9,8 @@ spring-boot-localstack.iml
 volume/
 obj/**
 .metadata
+*.bkp
+*.dtmp
 bin/
 tmp/
 logs/

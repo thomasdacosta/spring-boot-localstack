@@ -154,5 +154,35 @@ aws --endpoint http://localhost:4566 --profile localstack ssm put-parameter --na
 - Executar aplicação
 - Executar no Insomnia
 
+## Subindo na AWS com Academy Learner Lab:
+
+Nesse exemplo utilizamos AWS Academy Learner Lab nas aulas do AWS Academy
+
+- Iniciar o Lab;
+- Criar uma máquina EC2;
+- Gerar a chave do Putty;
+- Alterar os Security Groups para acessar a porta 8080;
+- Incluir **LabInstanceProfile** no EC2 para acesso as outros recursos;
+- Acessar via Putty;
+- Atualizar o SO:
+  ```
+  sudo yum update
+  ```
+- Instalar o Java:
+  ```
+  sudo yum install java-17-amazon-corretto
+  ```
+- Executar os scripts do arquivo **[localstack-production.bat](localstack%2Flocalstack-production.bat)** no **AWS Cloud Shell**;
+- Copiar o arquivo JAR para a máquina;
+- Enviar o **[start.sh](service%2Fstart.sh)** e **[spring-boot-localstack.service](service%2Fspring-boot-localstack.service)*.service** para a máquina;
+- Executar o script de subida;
+- Copiar o arquivo **[spring-boot-localstack.service](service%2Fspring-boot-localstack.service)** para **/etc/systemd/system**
+- Criar serviço no Linux:
+  ```
+  sudo systemctl enable spring-boot-localstack.service
+  sudo systemctl start spring-boot-localstack.service
+  sudo systemctl stop spring-boot-localstack.service
+  ```
+
 ---
 Thomás da Costa - [https://thomasdacosta.com.br](https://thomasdacosta.com.br)
