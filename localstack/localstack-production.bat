@@ -7,6 +7,7 @@ aws ssm put-parameter --name "/config/spring-boot-localstack_production/snsNotif
 aws ssm put-parameter --name "/config/spring-boot-localstack_production/valor1" --value "Oi Mundo" --type String
 aws ssm put-parameter --name "/config/spring-boot-localstack_production/valor2" --value "Hello World" --type String
 aws ssm put-parameter --name "/config/spring-boot-localstack_production/valor3" --value "Hola Mundo" --type String
+aws ssm put-parameter --name "/config/spring-boot-localstack_production/s3Bucket" --value "s3-helloworld" --type String
 
 echo ### Criando Bucket no S3 do LocalStack...
 aws s3 mb s3://s3-helloworld
