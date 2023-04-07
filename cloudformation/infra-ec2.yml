@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Create EC2"
+Resources:
+  MySecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: seg-spring-boot-localstack
+      GroupDescription: Security group for MyEC2Instance
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 8080
+          ToPort: 8080
+          CidrIp: 0.0.0.0/0
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          yum update -y
+          amazon-linux-extras install -y java-openjdk17
+      ImageId: ami-0c94855ba95c71c99 # AMI for your region and preference
+      KeyName: kp-spring-boot-localstack # name of the key pair you want to use
+      BlockDeviceMappings:
+        - DeviceName: /dev/sdh
+          Ebs:
+            VolumeSize: 8
+            VolumeType: gp2
+      SecurityGroupIds:
+        - !Ref MySecurityGroup
+      Tags:
+        - Key: Name
+          Value: ec2-spring-boot-localstack # name of your instance
+      IamInstanceProfile: LabInstanceProfile

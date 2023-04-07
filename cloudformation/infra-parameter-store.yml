@@ -1,0 +1,72 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Create Parameter Store"
+Resources:
+  HelloWorldParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "/config/spring-boot-localstack_production/helloWorld"
+      Type: "String"
+      Value: "Hello World Parameter Store"
+
+  SqsQueueNameParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "/config/spring-boot-localstack_production/sqsQueueName"
+      Type: "String"
+      Value: "sqs-spring-boot-localstack"
+
+  SnsNotificationNameParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "/config/spring-boot-localstack_production/snsNotificationName"
+      Type: "String"
+      Value: "sns-spring-boot-localstack"
+
+  Valor1Parameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "/config/spring-boot-localstack_production/valor1"
+      Type: "String"
+      Value: "Oi Mundo"
+
+  Valor2Parameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "/config/spring-boot-localstack_production/valor2"
+      Type: "String"
+      Value: "Hello World"
+
+  Valor3Parameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "/config/spring-boot-localstack_production/valor3"
+      Type: "String"
+      Value: "Hola Mundo"
+
+  S3BucketParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "/config/spring-boot-localstack_production/s3Bucket"
+      Type: "String"
+      Value: "s3-spring-boot-localstack"
+
+  DbUrlParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "/config/spring-boot-localstack_production/dbUrl"
+      Type: "String"
+      Value: "jdbc:mysql://localhost:3306/dbspringbootlocalstack?createDatabaseIfNotExist=true"
+
+  DbUserParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "/config/spring-boot-localstack_production/dbUser"
+      Type: "String"
+      Value: "admin"
+
+  DbPassParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "/config/spring-boot-localstack_production/dbPass"
+      Type: "String"
+      Value: "admin123"

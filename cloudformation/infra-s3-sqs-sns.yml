@@ -1,0 +1,42 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Create S3 Bucket, SNS Topic and SQS Queue with SNS subscription"
+Resources:
+  S3Bucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: s3-spring-boot-localstack
+  SNSTopic:
+    Type: "AWS::SNS::Topic"
+    Properties:
+      TopicName: "sns-spring-boot-localstack"
+      DisplayName: "sns-spring-boot-localstack"
+  SQSQueue:
+    Type: "AWS::SQS::Queue"
+    Properties:
+      QueueName: "sqs-spring-boot-localstack"
+      RedrivePolicy:
+        deadLetterTargetArn:
+          Fn::GetAtt:
+            - "DLQ"
+            - "Arn"
+        maxReceiveCount: 3
+  DLQ:
+    Type: "AWS::SQS::Queue"
+    Properties:
+      QueueName: "sqs-dlq-spring-boot-localstack"
+  SNSSubscription:
+    Type: "AWS::SNS::Subscription"
+    Properties:
+      Protocol: "sqs"
+      TopicArn: !Ref SNSTopic
+      Endpoint: !GetAtt SQSQueue.Arn
+Outputs:
+  S3BucketOutput:
+    Value: !Ref S3Bucket
+  SNSTopicOutput:
+    Value: !Ref SNSTopic
+  SQSQueueOutput:
+    Value: !Ref SQSQueue
+  DLQOutput:
+    Value: !Ref DLQ
