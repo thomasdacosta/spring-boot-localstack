@@ -1,0 +1,103 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Create RDS MySQL instance with security group"
+Resources:
+  DBSecurityGroup:
+    Type: AWS::RDS::DBSecurityGroup
+    Properties:
+      GroupDescription: Security group for RDS MySQL instance
+      DBSecurityGroupIngress:
+        - EC2SecurityGroupName: !Ref EC2SecurityGroup
+  DBInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      AllocatedStorage: 20
+      DBInstanceClass: db.t2.micro
+      Engine: mysql
+      EngineVersion: "8.0.25"
+      MasterUsername: admin
+      MasterUserPassword: admin123
+      DBInstanceIdentifier: myrdsinstance
+      DBName: mydb
+      MultiAZ: false
+      PubliclyAccessible: false
+      VPCSecurityGroups:
+  EC2SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: myec2securitygroup
+      GroupDescription: Security group for EC2 instance
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          CidrIp: 0.0.0.0/0
+
+
+#AWSTemplateFormatVersion: "2010-09-09"
+#Description: "Create EC2 and RDS MySQL"
+#Resources:
+#  EC2SecurityGroup:
+#    Type: AWS::EC2::SecurityGroup
+#    Properties:
+#      GroupName: seg-ec2-spring-boot-localstack
+#      GroupDescription: Security group for MyEC2Instance
+#      SecurityGroupIngress:
+#        - IpProtocol: tcp
+#          FromPort: 22
+#          ToPort: 22
+#          CidrIp: 0.0.0.0/0
+#        - IpProtocol: tcp
+#          FromPort: 3306
+#          ToPort: 3306
+#          CidrIp: 0.0.0.0/0
+#        - IpProtocol: tcp
+#          FromPort: 8080
+#          ToPort: 8080
+#          CidrIp: 0.0.0.0/0
+#  EC2Instance:
+#    Type: AWS::EC2::Instance
+#    Properties:
+#      InstanceType: t2.micro
+#      UserData:
+#        Fn::Base64: !Sub |
+#          #!/bin/bash
+#          yum update -y
+#          sudo yum install java-17-amazon-corretto -y
+#      ImageId: ami-06e46074ae430fba6 # AMI for your region and preference
+#      KeyName: kp-spring-boot-localstack # name of the key pair you want to use
+#      BlockDeviceMappings:
+#        - DeviceName: /dev/sdh
+#          Ebs:
+#            VolumeSize: 8
+#            VolumeType: gp2
+#      SecurityGroupIds:
+#        - !Ref EC2SecurityGroup
+#      Tags:
+#        - Key: Name
+#          Value: ec2-spring-boot-localstack # name of your instance
+#      IamInstanceProfile: LabInstanceProfile
+#
+#  DBInstance:
+#    Type: "AWS::RDS::DBInstance"
+#    Properties:
+#      DBInstanceClass: db.t2.micro
+#      Engine: mysql
+#      EngineVersion: "8.0.32"
+#      MasterUsername: admin
+#      MasterUserPassword: admin123
+#      AllocatedStorage: 20
+#      DBInstanceIdentifier: dbspringbootlocalstack
+#      DBName: dbspringbootlocalstack
+#      MultiAZ: false
+#      PubliclyAccessible: false
+#      VPCSecurityGroups:
+#        - !Ref DBSecurityGroup
+#  DBSecurityGroup:
+#    Type: "AWS::EC2::SecurityGroup"
+#    Properties:
+#      GroupName: seg-db-spring-boot-localstack
+#      GroupDescription: "Security group for RDS MySQL database"
+#      SecurityGroupIngress:
+#        - IpProtocol: tcp
+#          FromPort: 3306
+#          ToPort: 3306

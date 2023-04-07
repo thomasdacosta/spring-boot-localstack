@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: "Create EC2"
 Resources:
-  MySecurityGroup:
+  EC2SecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupName: seg-spring-boot-localstack
@@ -19,7 +19,7 @@ Resources:
           FromPort: 8080
           ToPort: 8080
           CidrIp: 0.0.0.0/0
-  MyEC2Instance:
+  EC2Instance:
     Type: AWS::EC2::Instance
     Properties:
       InstanceType: t2.micro
@@ -27,8 +27,8 @@ Resources:
         Fn::Base64: !Sub |
           #!/bin/bash
           yum update -y
-          amazon-linux-extras install -y java-openjdk17
-      ImageId: ami-0c94855ba95c71c99 # AMI for your region and preference
+          sudo yum install java-17-amazon-corretto -y
+      ImageId: ami-06e46074ae430fba6 # AMI for your region and preference
       KeyName: kp-spring-boot-localstack # name of the key pair you want to use
       BlockDeviceMappings:
         - DeviceName: /dev/sdh
@@ -36,7 +36,7 @@ Resources:
             VolumeSize: 8
             VolumeType: gp2
       SecurityGroupIds:
-        - !Ref MySecurityGroup
+        - !Ref EC2SecurityGroup
       Tags:
         - Key: Name
           Value: ec2-spring-boot-localstack # name of your instance
