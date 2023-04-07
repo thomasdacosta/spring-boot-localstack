@@ -1,11 +1,16 @@
----
 AWSTemplateFormatVersion: "2010-09-09"
-Description: "Create S3 Bucket, SNS Topic and SQS Queue with SNS subscription"
+Description: "Criando o S3, SNS e o SQS da aplicacao Spring Boot"
 Resources:
   S3Bucket:
     Type: "AWS::S3::Bucket"
     Properties:
       BucketName: s3-spring-boot-localstack
+      AccessControl: Private
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
   SNSTopic:
     Type: "AWS::SNS::Topic"
     Properties:
@@ -31,6 +36,27 @@ Resources:
       Protocol: "sqs"
       TopicArn: !Ref SNSTopic
       Endpoint: !GetAtt SQSQueue.Arn
+  SQSPolicy:
+    Type: AWS::SQS::QueuePolicy
+    Properties:
+      PolicyDocument:
+        Statement:
+          - Action: sqs:SendMessage
+            Condition:
+              ArnEquals:
+                aws:SourceArn:
+                  Ref: SNSTopic
+            Effect: Allow
+            Principal:
+              Service: sns.amazonaws.com
+            Resource:
+              Fn::GetAtt:
+                - SQSQueue
+                - Arn
+        Version: "2012-10-17"
+      Queues:
+        - Ref: SQSQueue
+
 Outputs:
   S3BucketOutput:
     Value: !Ref S3Bucket

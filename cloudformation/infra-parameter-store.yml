@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: "Create Parameter Store"
+Description: "Criando os parametros da aplicacao Spring Boot"
 Resources:
   HelloWorldParameter:
     Type: "AWS::SSM::Parameter"

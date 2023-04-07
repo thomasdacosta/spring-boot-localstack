@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: "Create EC2"
+Description: "Criando um EC2 para executar um microsservico em Spring Boot"
 Resources:
   EC2SecurityGroup:
     Type: AWS::EC2::SecurityGroup
