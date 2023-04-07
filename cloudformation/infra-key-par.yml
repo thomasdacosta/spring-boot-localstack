@@ -1,7 +1,0 @@
-AWSTemplateFormatVersion: "2010-09-09"
-Description: "Create Key Par"
-Resources:
-  MyKeyPair:
-    Type: AWS::EC2::KeyPair
-    Properties:
-      KeyName: kp-spring-boot-localstack
