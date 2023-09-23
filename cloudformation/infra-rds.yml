@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Criando um RDS para o microsservico em Spring Boot acessar a partir de um EC2"
+Resources:
+  DBInstance:
+    Type: "AWS::RDS::DBInstance"
+    Properties:
+      DBInstanceIdentifier: "dbspringbootlocalstack"
+      Engine: "mysql"
+      EngineVersion: "8.0.33"
+      DBName: "dbspringbootlocalstack"
+      MasterUsername: "admin"
+      MasterUserPassword: "admin123"
+      AllocatedStorage: "20"
+      DBInstanceClass: "db.t2.micro"
+      VPCSecurityGroups:
+        - !GetAtt DBSecurityGroup.GroupId
+      MultiAZ: false
+      PubliclyAccessible: false
+  DBSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription: "Allow database access"
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          SourceSecurityGroupId: !ImportValue SegSpringBootLocalstack

@@ -5,7 +5,7 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupName: seg-spring-boot-localstack
-      GroupDescription: Security group for MyEC2Instance
+      GroupDescription: SecurityGroup para o EC2 do Spring Boot
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 22
@@ -28,8 +28,8 @@ Resources:
           #!/bin/bash
           yum update -y
           sudo yum install java-17-amazon-corretto -y
-      ImageId: ami-06e46074ae430fba6 # AMI for your region and preference
-      KeyName: kp-spring-boot-localstack # name of the key pair you want to use
+      ImageId: ami-03a6eaae9938c858c # AMI for your region and preference
+      KeyName: kp-spring-boot-localstack # Chave deve ser criada antes de executar o script
       BlockDeviceMappings:
         - DeviceName: /dev/sdh
           Ebs:
@@ -41,3 +41,10 @@ Resources:
         - Key: Name
           Value: ec2-spring-boot-localstack # name of your instance
       IamInstanceProfile: LabInstanceProfile
+
+Outputs:
+  SecurityGroupId:
+    Description: ID do Security Group recém-criado
+    Value: !GetAtt EC2SecurityGroup.GroupId
+    Export:
+      Name: SegSpringBootLocalstack  # Escolha um nome exclusivo para a exportação
