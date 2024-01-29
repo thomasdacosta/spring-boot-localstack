@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "1431737c-bf0d-4cff-9130-a601d67f2742",
+		"name": "AWS LocalStack - Serviços de Mensageria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3374459"
+	},
+	"item": [
+		{
+			"name": "SQS",
+			"item": [
+				{
+					"name": "Enviar Mensagem",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sendMessage?message=Mensagem do SQS",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sendMessage"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "Mensagem do SQS"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SNS",
+			"item": [
+				{
+					"name": "Enviar Mensagem",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/topicMessage?message=Mensagem do SNS",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"topicMessage"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "Mensagem do SNS"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

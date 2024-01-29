@@ -33,6 +33,38 @@ Vamos criar uma aplicação com Spring Boot que funciona com os recursos do Loca
 33:24 Executando o teste no Insomnia<br/>
 34:43 EASTER EGG!!!!<br/>
 
+## Instale o AWS CLI antes de Executar o LocalStack
+
+Execute o comando abaixo com o AWS CLI instalado:
+
+```
+aws configure
+```
+
+Coloque os seguintes parametros:
+
+```
+AWS Access Key ID [None]: none
+AWS Secret Access Key [None]: none
+Default region name [None]: us-east-1
+Default output format [None]:
+```
+
+Execute o comando abaixo com o AWS CLI instalado:
+
+```
+aws configure --profile localstack
+```
+
+Coloque os seguintes parametros:
+
+```
+AWS Access Key ID [None]: localstack
+AWS Secret Access Key [None]: localstack
+Default region name [None]: us-east-1
+Default output format [None]:
+```
+
 ## Passo a passo para criar e configurar o projeto
 
 - Gerar projeto no Spring Initialzr:
