@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "7ebca90f-9623-4090-9fb6-dd29204066c3",
+		"name": "AWS LocalStack - Comunicação",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3374459"
+	},
+	"item": [
+		{
+			"name": "SecretsManager",
+			"item": [
+				{
+					"name": "Buscar SecretsManager",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/secretsManagerConfiguration",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"secretsManagerConfiguration"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SSM",
+			"item": [
+				{
+					"name": "Buscar ParameterStore",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/parameterStoreConfiguration",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"parameterStoreConfiguration"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
